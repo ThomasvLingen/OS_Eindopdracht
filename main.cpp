@@ -1,47 +1,32 @@
 #include <iostream>
-#include <getopt.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string>
+
+#include "options.h"
+#include "coefficients.h"
 
 using namespace std;
 
+void test(int banaan);
+
 int main(int argc, char* argv[]){
 
-    int threads;
-    int bass;
-    int treble;
-    char c;
-    string in;
-    string out;
-
-    while((c = getopt(argc, argv, "p:b:t:")) != -1){
-        switch(c){
-            case 'p':
-                threads = atoi(optarg);
-            break;
-            case 'b':
-                bass = atoi(optarg);
-            break;
-            case 't':
-                treble = atoi(optarg);
-            break;
-            case '?':
-                cout << "lolwut" << endl;
-            break;
-            default:
-                abort();
-            break;
-        }
-    }
-
-    in = argv[optind];
-    out = argv[optind+1];
+    Options opt(argc, argv);
+    Coefficients bass(opt.bassIntensity, CoefficientType::bass);
+    Coefficients treble(opt.trebleIntensity, CoefficientType::treble);
 
     cout << "Recieved options:" << endl;
-    cout << "Number of threads: " << threads << endl;
-    cout << "Bass intensity: " << bass << endl;
-    cout << "Treble intensity: " << treble << endl;
-    cout << "In filepath: " << in << endl;
-    cout << "Out filepath: " << out << endl;
+    cout << "Number of threads: " << opt.threads << endl;
+    cout << "Bass intensity: " << opt.bassIntensity << endl;
+    cout << "Treble intensity: " << opt.trebleIntensity << endl;
+    cout << "In filepath: " << opt.inPath << endl;
+    cout << "Out filepath: " << opt.outPath << endl;
+
+    cout << "a1 bass: " << bass.a1 << endl;
+    cout << "a2 bass: " << bass.a2 << endl;
+
+    cout << "a1 treble: " << treble.a1 << endl;
+    cout << "a2 treble: " << treble.a2 << endl;
 }
 
