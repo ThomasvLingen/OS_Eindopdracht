@@ -30,9 +30,14 @@ void Options::processArguments(int argc, char *argv[]){
     if(argv[optind]){
         this->inPath = argv[optind];
         optind++;
+    } else {
+        this->inPath = "NO FILE PASSED";
     }
+
     if(argv[optind]){
         this->outPath = argv[optind];
         optind++;
+    } else {
+        this->outPath = "NO FILE PASSED";
     }
 }

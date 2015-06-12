@@ -5,10 +5,9 @@
 
 #include "options.h"
 #include "coefficients.h"
+#include <fstream>
 
 using namespace std;
-
-void test(int banaan);
 
 int main(int argc, char* argv[]){
 

@@ -1,0 +1,4 @@
+#!/bin/bash
+# Playing you_and_i
+
+mplayer -rawaudio samplesize=2:channels=1:rate=44100 -demuxer rawaudio ./$1
