@@ -4,11 +4,12 @@
 #include <string>
 #include <fstream>
 
+#include "OS_namespaces.h"
+
 #include "options.h"
 #include "coefficients.h"
 #include "block.h"
-
-using namespace std;
+#include "blockqueue.h"
 
 int main(int argc, char* argv[]){
 
@@ -18,20 +19,12 @@ int main(int argc, char* argv[]){
 
     ifstream audiofile(opt.inPath, ios::in|ios::binary|ios::ate);
 
-    short appel[1024];
-
-    streampos size;
-    if (audiofile.is_open()){
-        size = audiofile.tellg();
-        //memblock = new char [size];
-        //file.seekg (0, ios::beg);
-        //file.read (memblock, size);
-        audiofile.close();
-
-        cout << size << endl;
+    if(audiofile.is_open()){
+        BlockQueue queue(audiofile);
     } else {
-        cout << "Couldn't open file " << opt.inPath << endl;
+        cout << "Couldn't open the input file!" << endl;
     }
+
 
     cout << "Recieved options:" << endl;
     cout << "Number of threads: " << opt.threads << endl;
