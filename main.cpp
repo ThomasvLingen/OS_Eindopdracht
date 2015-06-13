@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
+#include <fstream>
 
 #include "options.h"
 #include "coefficients.h"
-#include <fstream>
+#include "block.h"
 
 using namespace std;
 
@@ -14,6 +15,23 @@ int main(int argc, char* argv[]){
     Options opt(argc, argv);
     Coefficients bass(opt.bassIntensity, CoefficientType::bass);
     Coefficients treble(opt.trebleIntensity, CoefficientType::treble);
+
+    ifstream audiofile(opt.inPath, ios::in|ios::binary|ios::ate);
+
+    short appel[1024];
+
+    streampos size;
+    if (audiofile.is_open()){
+        size = audiofile.tellg();
+        //memblock = new char [size];
+        //file.seekg (0, ios::beg);
+        //file.read (memblock, size);
+        audiofile.close();
+
+        cout << size << endl;
+    } else {
+        cout << "Couldn't open file " << opt.inPath << endl;
+    }
 
     cout << "Recieved options:" << endl;
     cout << "Number of threads: " << opt.threads << endl;
