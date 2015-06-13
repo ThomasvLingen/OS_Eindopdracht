@@ -11,7 +11,7 @@ std::ostream& operator<<(std::ostream& os, Block_status s);
 class Block
 {
 public:
-    Block(short ID, short (&samples)[1024]);
+    Block(short ID, short* samples);
     short ID;
     short samples[1024];
     Block_status status;

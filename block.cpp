@@ -18,12 +18,12 @@ std::ostream& operator<<(std::ostream& os, Block_status s){
     }
 }
 
-//Oh lord what have I done    V Abomination of a syntax
-Block::Block(short ID, short (&samples)[1024]){
+Block::Block(short ID, short* samples){
     this->ID = ID;
     this->status = Block_status::unprocessed;
 
-    std::copy(std::begin(samples), std::end(samples), std::begin(this->samples));
+    std::copy(samples, samples+1024, this->samples);
+
 }
 
 void Block::advance(){

@@ -1,8 +1,11 @@
+//We put all these inclusions up here to make sure that OS_namespaces.h has visibility of the contents
+//So that we can have the using statements right there
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
 #include <fstream>
+#include <vector>
 
 #include "OS_namespaces.h"
 
@@ -17,12 +20,14 @@ int main(int argc, char* argv[]){
     Coefficients bass(opt.bassIntensity, CoefficientType::bass);
     Coefficients treble(opt.trebleIntensity, CoefficientType::treble);
 
-    ifstream audiofile(opt.inPath, ios::in|ios::binary|ios::ate);
+    ifstream audiofile(opt.inPath, ios::in|ios::binary);
 
     if(audiofile.is_open()){
         BlockQueue queue(audiofile);
+        audiofile.close();
     } else {
         cout << "Couldn't open the input file!" << endl;
+        abort();
     }
 
 
