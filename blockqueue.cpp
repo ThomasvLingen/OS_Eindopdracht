@@ -31,3 +31,19 @@ void BlockQueue::buildQueue(ifstream &audiofile){
 
     delete[] buff;
 }
+
+void BlockQueue::writeQueueToFile(string filename){
+    ofstream outputFile(filename , ofstream::binary);
+
+    for(Block* block : this->queue){
+        outputFile.write((char*)&block->samples, sizeof(block->samples));
+    }
+}
+
+void BlockQueue::writeQueueToFileBackwards(string filename){
+    ofstream outputFile(filename , ofstream::binary);
+
+    for(int i = this->queue.size()-1; i >= 0; i--){
+        outputFile.write((char*)&this->queue[i]->samples, 2048);
+    }
+}

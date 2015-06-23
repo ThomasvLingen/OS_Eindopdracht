@@ -8,9 +8,12 @@ using std::cout;
 using std::endl;
 
 using std::ifstream;
+using std::ofstream;
 using std::ios;
 using std::streampos;
 
 using std::vector;
+
+using std::string;
 
 #endif // OS_NAMESPACES_H

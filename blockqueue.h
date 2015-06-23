@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <string>
 
 #include "block.h"
 #include "OS_namespaces.h"
@@ -17,6 +18,8 @@ public:
     vector<Block*> queue;
     void setFileSize(ifstream& audiofile);
     void buildQueue(ifstream& audiofile);
+    void writeQueueToFile(string filename);
+    void writeQueueToFileBackwards(string filename);
 };
 
 #endif // BLOCKQUEUE_H
