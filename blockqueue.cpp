@@ -1,6 +1,10 @@
 #include "blockqueue.h"
 
-BlockQueue::BlockQueue(ifstream& audiofile){
+BlockQueue::BlockQueue(){
+    this->nextBlockToProcess = 0;
+}
+
+void BlockQueue::build(ifstream &audiofile){
     this->setFileSize(audiofile);
 
     this->buildQueue(audiofile);
@@ -46,4 +50,10 @@ void BlockQueue::writeQueueToFileBackwards(string filename){
     for(int i = this->queue.size()-1; i >= 0; i--){
         outputFile.write((char*)&this->queue[i]->samples, 2048);
     }
+}
+
+//Consumer has to increment nextBlockToProcess once it starts working on a block!
+//Mutex needed?
+bool BlockQueue::blockAvailableToProcess(){
+    return this->queue.size() > 0 && this->nextBlockToProcess <= this->queue.size()-1;
 }

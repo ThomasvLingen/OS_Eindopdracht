@@ -12,10 +12,15 @@
 class BlockQueue
 {
 public:
-    BlockQueue(ifstream& audiofile);
+    BlockQueue();
     //To be thrown on the heap using the new keyword
     streampos fileSize;
     vector<Block*> queue;
+
+    int nextBlockToProcess;
+
+    bool blockAvailableToProcess();
+    void build(ifstream& audiofile);
     void setFileSize(ifstream& audiofile);
     void buildQueue(ifstream& audiofile);
     void writeQueueToFile(string filename);

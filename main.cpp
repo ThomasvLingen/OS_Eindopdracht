@@ -6,8 +6,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include <QReadLocker>
-#include <QReadLocker>
+#include <thread>
 
 #include "OS_namespaces.h"
 
@@ -15,26 +14,19 @@
 #include "coefficients.h"
 #include "block.h"
 #include "blockqueue.h"
+#include "blockqueuefiller.h"
 
 int main(int argc, char* argv[]){
 
     Options opt(argc, argv);
     Coefficients bass(opt.bassIntensity, CoefficientType::bass);
     Coefficients treble(opt.trebleIntensity, CoefficientType::treble);
-    QReadWriteLock lock;
+    BlockQueue queue;
 
-    ifstream audiofile(opt.inPath, ios::in|ios::binary);
 
-    if(audiofile.is_open()){
-        lock.lockForRead();
-        BlockQueue queue(audiofile);
-        audiofile.close();
-        queue.writeQueueToFile(opt.outPath);
-        lock.unlock();
-    } else {
-        cout << "Couldn't open the input file!" << endl;
-        abort();
-    }
+    blockQueueFiller banaan(queue, opt.inPath);
+    banaan.test();
+    queue.writeQueueToFile(opt.outPath);
 
 
     cout << "Recieved options:" << endl;
