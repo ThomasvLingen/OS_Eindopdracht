@@ -23,11 +23,9 @@ int main(int argc, char* argv[]){
     Coefficients treble(opt.trebleIntensity, CoefficientType::treble);
     BlockQueue queue;
 
-
     blockQueueFiller banaan(queue, opt.inPath);
-    banaan.test();
+    banaan._objThread->join();
     queue.writeQueueToFile(opt.outPath);
-
 
     cout << "Recieved options:" << endl;
     cout << "Number of threads: " << opt.threads << endl;
