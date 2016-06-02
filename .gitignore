@@ -2,3 +2,7 @@ OS.*
 OS_Eindopdracht.pro*
 Makefile
 
+# Clion stuff
+.idea/
+# build folder
+build/
