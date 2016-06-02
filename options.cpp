@@ -41,3 +41,11 @@ void Options::processArguments(int argc, char *argv[]){
         this->outPath = "NO FILE PASSED";
     }
 }
+
+void Options::printOptions() {
+    cout << "Number of threads: " << this->threads << endl;
+    cout << "Bass intensity: " << this->bassIntensity << endl;
+    cout << "Treble intensity: " << this->trebleIntensity << endl;
+    cout << "In filepath: " << this->inPath << endl;
+    cout << "Out filepath: " << this->outPath << endl;
+}
