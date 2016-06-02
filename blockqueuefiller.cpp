@@ -1,10 +1,11 @@
 #include "blockqueuefiller.h"
 
-blockQueueFiller::blockQueueFiller(BlockQueue& targetQueue, string inPath)
-    :target(targetQueue){
-
+blockQueueFiller::blockQueueFiller(ThreadManager& thread_manager, BlockQueue& targetQueue, string inPath)
+    :target(targetQueue),
+    thread_manager(thread_manager)
+{
     //Start internal thread
-    this->_objThread = new thread(&blockQueueFiller::run, this, inPath);
+    this->_objThread = this->thread_manager.track_new_thread(new thread(&blockQueueFiller::run, this, inPath));
 }
 
 blockQueueFiller::~blockQueueFiller(){
@@ -25,6 +26,8 @@ void blockQueueFiller::run(string inPath){
         cout << "Can't open file with the specified input path, aborting!" << endl;
         abort();
     }
+
+    this->thread_manager.untrack_thread();
 }
 
 void blockQueueFiller::test(){

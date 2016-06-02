@@ -15,7 +15,7 @@ set(SOURCE_FILES
     main.cpp
     options.cpp
     options.h
-    OS_namespaces.h)
+    OS_namespaces.h ThreadManager.cpp ThreadManager.hpp config.hpp)
 
 find_package (Threads)
 add_executable(mafn_ate ${SOURCE_FILES})

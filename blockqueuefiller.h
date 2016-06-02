@@ -3,6 +3,7 @@
 
 #include "blockqueue.h"
 #include "options.h"
+#include "ThreadManager.hpp"
 #include "OS_namespaces.h"
 
 class blockQueueFiller
@@ -17,11 +18,12 @@ public:
      * that all behaviour of this object is exhibited paralelly
      * */
     thread* _objThread;
+    ThreadManager& thread_manager;
 
     string inPath;
     BlockQueue& target;
 
-    blockQueueFiller(BlockQueue& targetQueue, string inPath);
+    blockQueueFiller(ThreadManager& thread_manager, BlockQueue& targetQueue, string inPath);
     ~blockQueueFiller();
     void test();
     void run(string inPath);

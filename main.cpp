@@ -1,11 +1,6 @@
 //We put all these inclusions up here to make sure that OS_namespaces.h has visibility of the contents
 //So that we can have the using statements right there
 #include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string>
-#include <fstream>
-#include <vector>
 #include <thread>
 
 #include "OS_namespaces.h"
@@ -15,6 +10,7 @@
 #include "block.h"
 #include "blockqueue.h"
 #include "blockqueuefiller.h"
+#include "ThreadManager.hpp"
 
 int main(int argc, char* argv[]){
 
@@ -22,18 +18,21 @@ int main(int argc, char* argv[]){
     Coefficients bass(opt.bassIntensity, CoefficientType::bass);
     Coefficients treble(opt.trebleIntensity, CoefficientType::treble);
     BlockQueue queue;
+    ThreadManager thread_manager(opt.threads);
 
-    blockQueueFiller banaan(queue, opt.inPath);
+    blockQueueFiller banaan(thread_manager, queue, opt.inPath);
     banaan._objThread->join();
     queue.writeQueueToFile(opt.outPath);
 
-    opt.printOptions();
+    if (DEBUG) {
+        opt.printOptions();
 
-    cout << "a1 bass: " << bass.a1 << endl;
-    cout << "a2 bass: " << bass.a2 << endl;
+        cout << "a1 bass: " << bass.a1 << endl;
+        cout << "a2 bass: " << bass.a2 << endl;
 
-    cout << "a1 treble: " << treble.a1 << endl;
-    cout << "a2 treble: " << treble.a2 << endl;
+        cout << "a1 treble: " << treble.a1 << endl;
+        cout << "a2 treble: " << treble.a2 << endl;
+    }
 
     return 0;
 }

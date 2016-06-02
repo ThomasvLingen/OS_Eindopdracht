@@ -8,6 +8,9 @@
 #include <fstream>
 #include <vector>
 #include <thread>
+#include <mutex>
+
+#include "config.hpp"
 
 //Reason we choose to do this seperately for each thing we want to use from the STD namespace:
 //This way we won't pull the entire namespace with us or force someone who might include one of my headers
@@ -25,5 +28,7 @@ using std::vector;
 using std::string;
 
 using std::thread;
+
+using std::mutex;
 
 #endif // OS_NAMESPACES_H
