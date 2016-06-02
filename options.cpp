@@ -23,7 +23,6 @@ void Options::processArguments(int argc, char *argv[]){
             break;
             default:
                 abort();
-            break;
         }
     }
 
