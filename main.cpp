@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
     ThreadManager thread_manager(opt.threads);
 
     blockQueueFiller banaan(thread_manager, queue, opt.inPath);
-    banaan._objThread->join();
+    banaan.complete_task();
     queue.writeQueueToFile(opt.outPath);
 
     if (DEBUG) {
