@@ -9,7 +9,9 @@ blockQueueFiller::blockQueueFiller(BlockQueue& targetQueue, string inPath)
 
 blockQueueFiller::~blockQueueFiller(){
     //Make really fucking sure that all our current behaviour has ended
-    this->_objThread->join();
+    if (this->_objThread->joinable()) {
+        this->_objThread->join();
+    }
 
     delete this->_objThread;
 }

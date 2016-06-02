@@ -24,6 +24,7 @@ int main(int argc, char* argv[]){
     BlockQueue queue;
 
     blockQueueFiller banaan(queue, opt.inPath);
+    banaan._objThread->join();
     queue.writeQueueToFile(opt.outPath);
 
     opt.printOptions();
