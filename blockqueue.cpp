@@ -22,9 +22,9 @@ void BlockQueue::buildQueue(ifstream &audiofile){
     short* buff = new short[1024];
 
     while (audiofile.tellg() != -1){
-        audiofile.read((char*)buff, 2048);
+        audiofile.read((char*)buff, sizeof(short[1024]));
 
-        if(audiofile.gcount() < 2048){
+        if(audiofile.gcount() < sizeof(short[1024])){
             //This indicates we had our last read
             break;
         }
