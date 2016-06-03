@@ -1,8 +1,3 @@
-//We put all these inclusions up here to make sure that OS_namespaces.h has visibility of the contents
-//So that we can have the using statements right there
-#include <iostream>
-#include <thread>
-
 #include "OS_namespaces.h"
 
 #include "options.h"
@@ -10,7 +5,6 @@
 #include "block.h"
 #include "blockqueue.h"
 #include "blockqueuefiller.h"
-#include "ThreadManager.hpp"
 
 int main(int argc, char* argv[]){
 
