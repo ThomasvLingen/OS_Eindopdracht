@@ -3,7 +3,10 @@
 #include "options.h"
 #include "coefficients.h"
 #include "ATE_BlockQueue/blockqueue.h"
-#include "blockqueuefiller.h"
+#include "ATE_Threading/Workers/blockqueuefiller.h"
+
+using ATE_Threading::ThreadManager;
+using ATE_Threading::blockQueueFiller;
 
 int main(int argc, char* argv[]){
 

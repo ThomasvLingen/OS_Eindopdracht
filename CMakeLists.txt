@@ -10,14 +10,14 @@ set(SOURCE_FILES
     ATE_BlockQueue/block.h
     ATE_BlockQueue/blockqueue.cpp
     ATE_BlockQueue/blockqueue.h
-    blockqueuefiller.cpp
-    blockqueuefiller.h
+    ATE_Threading/Workers/blockqueuefiller.cpp
+    ATE_Threading/Workers/blockqueuefiller.h
     coefficients.cpp
     coefficients.h
     main.cpp
     options.cpp
     options.h
-    OS_namespaces.h ThreadManager.cpp ThreadManager.hpp config.hpp ThreadWorker.cpp ThreadWorker.hpp)
+    OS_namespaces.h ATE_Threading/ThreadManager.cpp ATE_Threading/ThreadManager.hpp config.hpp ATE_Threading/ThreadWorker.cpp ATE_Threading/ThreadWorker.hpp)
 
 find_package (Threads)
 add_executable(mafn_ate ${SOURCE_FILES})
