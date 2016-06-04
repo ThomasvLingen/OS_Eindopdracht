@@ -4,7 +4,6 @@
 #include "ATE_BlockQueue/blockqueue.h"
 #include "ATE_Threading/ThreadManager.hpp"
 #include "ATE_Threading/ThreadWorker.hpp"
-#include "options.h"
 #include "OS_namespaces.h"
 
 using ATE_BlockQueue::BlockQueue;

@@ -1,10 +1,13 @@
 #include "OS_namespaces.h"
 
-#include "options.h"
-#include "coefficients.h"
+#include "ATE_Util/options.h"
+#include "ATE_Util/coefficients.h"
 #include "ATE_BlockQueue/blockqueue.h"
 #include "ATE_Threading/Workers/blockqueuefiller.h"
 
+using ATE_Util::Options;
+using ATE_Util::Coefficients;
+using ATE_Util::CoefficientType;
 using ATE_Threading::ThreadManager;
 using ATE_Threading::blockQueueFiller;
 

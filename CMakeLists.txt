@@ -12,11 +12,11 @@ set(SOURCE_FILES
     ATE_BlockQueue/blockqueue.h
     ATE_Threading/Workers/blockqueuefiller.cpp
     ATE_Threading/Workers/blockqueuefiller.h
-    coefficients.cpp
-    coefficients.h
+    ATE_Util/coefficients.cpp
+    ATE_Util/coefficients.h
     main.cpp
-    options.cpp
-    options.h
+    ATE_Util/options.cpp
+    ATE_Util/options.h
     OS_namespaces.h ATE_Threading/ThreadManager.cpp ATE_Threading/ThreadManager.hpp config.hpp ATE_Threading/ThreadWorker.cpp ATE_Threading/ThreadWorker.hpp)
 
 find_package (Threads)
