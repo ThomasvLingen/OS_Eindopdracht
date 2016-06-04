@@ -3,11 +3,13 @@ project(mafn_ate)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread" )
 
+include_directories(${CMAKE_SOURCE_DIR})
+
 set(SOURCE_FILES
-    block.cpp
-    block.h
-    blockqueue.cpp
-    blockqueue.h
+    ATE_BlockQueue/block.cpp
+    ATE_BlockQueue/block.h
+    ATE_BlockQueue/blockqueue.cpp
+    ATE_BlockQueue/blockqueue.h
     blockqueuefiller.cpp
     blockqueuefiller.h
     coefficients.cpp

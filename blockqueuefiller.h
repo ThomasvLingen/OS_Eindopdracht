@@ -1,11 +1,13 @@
 #ifndef BLOCKQUEUEFILLER_H
 #define BLOCKQUEUEFILLER_H
 
-#include "blockqueue.h"
+#include "ATE_BlockQueue/blockqueue.h"
 #include "options.h"
 #include "ThreadManager.hpp"
 #include "ThreadWorker.hpp"
 #include "OS_namespaces.h"
+
+using ATE_BlockQueue::BlockQueue;
 
 class blockQueueFiller : public ThreadWorker
 {

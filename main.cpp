@@ -2,8 +2,7 @@
 
 #include "options.h"
 #include "coefficients.h"
-#include "block.h"
-#include "blockqueue.h"
+#include "ATE_BlockQueue/blockqueue.h"
 #include "blockqueuefiller.h"
 
 int main(int argc, char* argv[]){
