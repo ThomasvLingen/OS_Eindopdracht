@@ -5,7 +5,6 @@
 #include "ATE_BlockQueue/blockqueue.h"
 #include "ATE_Threading/Workers/blockqueuefiller.h"
 #include "ATE_Threading/Workers/BlockProcessor.hpp"
-#include "ATE_Util/wait.hpp"
 
 using ATE_Util::Options;
 using ATE_Util::Coefficients;
@@ -27,9 +26,6 @@ int main(int argc, char* argv[]){
         exit(EXIT_FAILURE);
     }
 
-    if (DEBUG) {
-        cout << "Spawning new producer thread" << endl;
-    }
     blockQueueFiller producer(thread_manager, queue, opt.inPath);
     vector<BlockProcessor*> consumers;
 
@@ -40,10 +36,6 @@ int main(int argc, char* argv[]){
 
     while (!queue.is_processed()) {
         if (thread_manager.thread_available()) {
-            if (DEBUG) {
-                cout << "Spawning new consumer thread" << endl;
-            }
-
             consumers.push_back(new BlockProcessor(thread_manager, queue, bass, treble));
         }
 

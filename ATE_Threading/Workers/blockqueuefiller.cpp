@@ -9,6 +9,9 @@ namespace ATE_Threading {
   {
       this->inPath = inPath;
 
+      if (DEBUG) {
+          cout << "Spawning new producer thread" << endl;
+      }
       this->run();
   }
 

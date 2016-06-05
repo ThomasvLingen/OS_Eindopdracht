@@ -13,6 +13,10 @@ namespace ATE_Threading {
             bass_coeff(bass_coeff),
             treble_coeff(treble_coeff)
   {
+      if (DEBUG) {
+          cout << "Spawning new consumer thread" << endl;
+      }
+
       this->run();
   }
 
