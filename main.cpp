@@ -13,16 +13,18 @@ using ATE_Threading::ThreadManager;
 using ATE_Threading::blockQueueFiller;
 using ATE_Threading::BlockProcessor;
 
-int main(int argc, char* argv[]){
+void print_usage();
 
+int main(int argc, char* argv[]){
     Options opt(argc, argv);
     Coefficients bass(opt.bassIntensity, CoefficientType::bass);
     Coefficients treble(opt.trebleIntensity, CoefficientType::treble);
     BlockQueue queue;
     ThreadManager thread_manager(opt.threads);
 
-    if (opt.threads < 1) {
-        cout << "[ERROR] This application needs at least 1 thread to work";
+    // Verify the passed options and complain if they're wrong
+    if (!opt.verify_options()) {
+        print_usage();
         exit(EXIT_FAILURE);
     }
 
@@ -47,3 +49,6 @@ int main(int argc, char* argv[]){
     return 0;
 }
 
+void print_usage() {
+    cout << "usage: mafn_ate in_path out_path -p num_threads -b bass_intensity -t treble_intensity" << endl;
+}

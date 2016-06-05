@@ -52,4 +52,28 @@ namespace ATE_Util {
       cout << "Out filepath: " << this->outPath << endl;
   }
 
+  bool Options::verify_options() {
+      if (this->outPath == "NO FILE PASSED" || this->inPath == "NO FILE PASSED") {
+          cout << "Either an input or output file path has not been passed" << endl;
+          return false;
+      }
+
+      if (this->threads < 1 || this->threads > 8) {
+          cout << "Passed threads should be between 1 and 8" << endl;
+          return false;
+      }
+
+      if (this->trebleIntensity < -6 || this->trebleIntensity > 6) {
+          cout << "Passed treble intensity should be between -6 and +6" << endl;
+          return false;
+      }
+
+      if (this->bassIntensity < -6 || this->bassIntensity > 6) {
+          cout << "Passed treble intensity should be between -6 and +6" << endl;
+          return false;
+      }
+
+      return true;
+  }
+
 }

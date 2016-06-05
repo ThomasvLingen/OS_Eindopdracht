@@ -21,6 +21,7 @@ namespace ATE_Util {
       Options(int argc, char* argv[]);
       void processArguments(int argc, char* argv[]);
       void printOptions();
+      bool verify_options();
   };
 
 }
