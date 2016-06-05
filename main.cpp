@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
                 cout << "Spawning new consumer thread" << endl;
             }
 
-            consumers.push_back(new BlockProcessor(thread_manager, queue));
+            consumers.push_back(new BlockProcessor(thread_manager, queue, bass, treble));
         }
 
         ATE_Util::wait();
