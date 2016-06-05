@@ -6,6 +6,7 @@
 #define MAFN_ATE_THREADMANAGER_HPP
 
 #include "OS_namespaces.h"
+#include "ATE_Util/wait.hpp"
 
 namespace ATE_Threading {
 
@@ -19,6 +20,7 @@ namespace ATE_Threading {
   public:
       ThreadManager(int max_threads);
 
+      bool thread_available();
       void wait_for_available_thread();
 
       thread* track_new_thread(thread* to_track);

@@ -36,9 +36,13 @@ namespace ATE_Threading {
       this->threadcount_mutex.unlock();
   }
 
+  bool ThreadManager::thread_available() {
+      return this->thread_count < this->max_threads;
+  }
+
   void ThreadManager::wait_for_available_thread() {
-      while (this->thread_count >= this->max_threads) {
-          asm("nop");
+      while (!this->thread_available()) {
+          ATE_Util::wait();
       }
   }
 

@@ -17,7 +17,7 @@ set(SOURCE_FILES
     main.cpp
     ATE_Util/options.cpp
     ATE_Util/options.h
-    OS_namespaces.h ATE_Threading/ThreadManager.cpp ATE_Threading/ThreadManager.hpp config.hpp ATE_Threading/ThreadWorker.cpp ATE_Threading/ThreadWorker.hpp)
+    OS_namespaces.h ATE_Threading/ThreadManager.cpp ATE_Threading/ThreadManager.hpp config.hpp ATE_Threading/ThreadWorker.cpp ATE_Threading/ThreadWorker.hpp ATE_Util/wait.hpp ATE_Threading/Workers/BlockProcessor.cpp ATE_Threading/Workers/BlockProcessor.hpp)
 
 find_package (Threads)
 add_executable(mafn_ate ${SOURCE_FILES})

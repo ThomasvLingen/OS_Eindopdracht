@@ -4,18 +4,61 @@
 namespace ATE_BlockQueue {
   BlockQueue::BlockQueue(){
       this->nextBlockToProcess = 0;
+      this->is_filled = false;
+  }
+
+  BlockQueue::~BlockQueue() {
+      for (Block* block : this->queue) {
+          delete block;
+      }
   }
 
   void BlockQueue::build(ifstream &audiofile){
       this->setFileSize(audiofile);
 
       this->buildQueue(audiofile);
+
+      this->mark_as_filled();
   }
 
   void BlockQueue::setFileSize(ifstream &audiofile){
       audiofile.seekg(0, ios::end);
       this->fileSize = audiofile.tellg();
       audiofile.seekg (0, ios::beg);
+  }
+
+  void BlockQueue::add_to_queue(Block* to_add) {
+      this->block_mutex.lock();
+
+      this->queue.push_back(to_add);
+
+      if (DEBUG) {
+          cout << "[QUEUE] ADDING " << to_add->ID << endl;
+      }
+
+      this->block_mutex.unlock();
+  }
+
+  Block* BlockQueue::get_next_block_to_process() {
+      Block* next_block_to_process;
+
+      this->block_mutex.lock();
+
+      if (this->blockAvailableToProcess()) {
+          next_block_to_process = this->queue[this->nextBlockToProcess];
+
+          if (DEBUG) {
+              cout << "[QUEUE] GIVING OUT " << next_block_to_process->ID << endl;
+          }
+
+          this->nextBlockToProcess++;
+      } else {
+          next_block_to_process = nullptr;
+      }
+
+      this->block_mutex.unlock();
+
+      return next_block_to_process;
   }
 
   void BlockQueue::buildQueue(ifstream &audiofile){
@@ -31,7 +74,7 @@ namespace ATE_BlockQueue {
               break;
           }
 
-          this->queue.push_back(new Block(currentBlockID, buff));
+          this->add_to_queue(new Block(currentBlockID, buff));
           currentBlockID++;
       }
 
@@ -54,10 +97,29 @@ namespace ATE_BlockQueue {
       }
   }
 
-  // Consumer has to increment nextBlockToProcess once it starts working on a block!
-  // Mutex needed?
+  void BlockQueue::mark_as_filled() {
+      this->is_filled = true;
+  }
+
+  bool BlockQueue::is_processed() {
+      return this->is_filled && this->all_blocks_processed();
+  }
+
+  bool BlockQueue::all_blocks_processed() {
+      for (Block* block : this->queue) {
+          if (block->status != Block_status::processed) {
+              return false;
+          }
+      }
+
+      return true;
+  }
+
   bool BlockQueue::blockAvailableToProcess(){
-      return this->queue.size() > 0 && this->nextBlockToProcess <= this->queue.size()-1;
+      bool not_empty = this->queue.size() > 0;
+      bool block_left = this->nextBlockToProcess <= this->queue.size()-1;
+
+      return not_empty && block_left;
   }
 
 }
