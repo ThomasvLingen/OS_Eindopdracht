@@ -1,7 +1,7 @@
 #ifndef BLOCKQUEUEFILLER_H
 #define BLOCKQUEUEFILLER_H
 
-#include "ATE_BlockQueue/blockqueue.h"
+#include "ATE_BlockQueue/blockqueue.hpp"
 #include "ATE_Threading/ThreadManager.hpp"
 #include "ATE_Threading/ThreadWorker.hpp"
 #include "OS_namespaces.h"

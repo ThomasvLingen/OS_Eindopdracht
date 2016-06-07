@@ -6,9 +6,9 @@
 #define MAFN_ATE_BLOCKPROCESSOR_HPP
 
 #include "ATE_Threading/ThreadWorker.hpp"
-#include "ATE_BlockQueue/blockqueue.h"
-#include "ATE_BlockQueue/block.h"
-#include "ATE_Util/coefficients.h"
+#include "ATE_BlockQueue/blockqueue.hpp"
+#include "ATE_BlockQueue/block.hpp"
+#include "ATE_Util/coefficients.hpp"
 
 
 namespace ATE_Threading {

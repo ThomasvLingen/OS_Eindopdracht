@@ -1,9 +1,9 @@
 #include "OS_namespaces.h"
 
-#include "ATE_Util/options.h"
-#include "ATE_Util/coefficients.h"
-#include "ATE_BlockQueue/blockqueue.h"
-#include "ATE_Threading/Workers/blockqueuefiller.h"
+#include "ATE_Util/options.hpp"
+#include "ATE_Util/coefficients.hpp"
+#include "ATE_BlockQueue/blockqueue.hpp"
+#include "ATE_Threading/Workers/blockqueuefiller.hpp"
 #include "ATE_Threading/Workers/BlockProcessor.hpp"
 
 using ATE_Util::Options;

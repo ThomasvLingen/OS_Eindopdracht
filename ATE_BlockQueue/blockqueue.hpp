@@ -7,7 +7,7 @@
 #include <string>
 #include <mutex>
 
-#include "block.h"
+#include "block.hpp"
 #include "OS_namespaces.h"
 
 namespace ATE_BlockQueue {

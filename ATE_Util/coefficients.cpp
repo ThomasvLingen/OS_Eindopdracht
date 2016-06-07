@@ -1,4 +1,4 @@
-#include "coefficients.h"
+#include "coefficients.hpp"
 
 
 namespace ATE_Util {
