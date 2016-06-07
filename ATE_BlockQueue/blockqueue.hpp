@@ -17,8 +17,8 @@ namespace ATE_BlockQueue {
       BlockQueue();
       virtual ~BlockQueue();
 
-      //To be thrown on the heap using the new keyword
       streampos fileSize;
+      //To be thrown on the heap
       vector<Block*> queue;
 
       int nextBlockToProcess;

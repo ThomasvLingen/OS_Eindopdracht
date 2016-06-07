@@ -46,6 +46,11 @@ int main(int argc, char* argv[]){
 
     queue.writeQueueToFile(opt.outPath);
 
+    // Clean up consumers
+    for (BlockProcessor* worker : consumers) {
+        delete worker;
+    }
+
     return 0;
 }
 
