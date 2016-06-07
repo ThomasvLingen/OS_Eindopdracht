@@ -1,14 +1,14 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
-#include <iterator>
+#include "OS_namespaces.h"
 
 
 namespace ATE_BlockQueue {
   enum class Block_status{unprocessed, b_done, t_done, processed};
 
   Block_status& operator++(Block_status& s);
-  std::ostream& operator<<(std::ostream& os, Block_status s);
+  ostream& operator<<(ostream& os, Block_status s);
 
   class Block
   {

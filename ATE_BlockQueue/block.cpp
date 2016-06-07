@@ -11,7 +11,7 @@ namespace ATE_BlockQueue {
       }
   }
 
-  std::ostream& operator<<(std::ostream& os, Block_status s){
+  ostream& operator<<(ostream& os, Block_status s){
       switch(s){
           case Block_status::unprocessed: os << "Block_status::unprocessed"; return os;
           case Block_status::b_done: os << "Block_status::b_done"; return os;

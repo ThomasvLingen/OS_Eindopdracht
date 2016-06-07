@@ -1,14 +1,10 @@
 #ifndef BLOCKQUEUE_H
 #define BLOCKQUEUE_H
 
-#include <fstream>
-#include <iostream>
-#include <vector>
-#include <string>
-#include <mutex>
+#include "OS_namespaces.h"
 
 #include "block.hpp"
-#include "OS_namespaces.h"
+
 
 namespace ATE_BlockQueue {
   class BlockQueue

@@ -9,6 +9,7 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <iterator>
 
 #include "config.hpp"
 
@@ -20,6 +21,7 @@ using std::endl;
 
 using std::ifstream;
 using std::ofstream;
+using std::ostream;
 using std::ios;
 using std::streampos;
 
