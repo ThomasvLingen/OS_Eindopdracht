@@ -1,10 +1,7 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-#include <getopt.h>
-#include <stdlib.h>
-#include <string>
-#include <iostream>
+#include "OS_namespaces.h"
 
 
 namespace ATE_Util {

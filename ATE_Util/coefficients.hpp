@@ -1,7 +1,7 @@
 #ifndef COEFFICIENTS_H
 #define COEFFICIENTS_H
 
-#include <math.h>
+#include "OS_namespaces.h"
 
 
 namespace ATE_Util {
