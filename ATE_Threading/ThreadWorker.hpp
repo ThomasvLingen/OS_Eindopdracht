@@ -9,6 +9,7 @@
 
 #include "ThreadManager.hpp"
 
+
 namespace ATE_Threading {
 
   class ThreadWorker {

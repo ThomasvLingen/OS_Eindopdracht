@@ -1,14 +1,15 @@
 #ifndef BLOCKQUEUEFILLER_H
 #define BLOCKQUEUEFILLER_H
 
+#include "OS_namespaces.h"
+
 #include "ATE_BlockQueue/blockqueue.hpp"
 #include "ATE_Threading/ThreadManager.hpp"
 #include "ATE_Threading/ThreadWorker.hpp"
-#include "OS_namespaces.h"
 
-using ATE_BlockQueue::BlockQueue;
 
 namespace ATE_Threading {
+  using ATE_BlockQueue::BlockQueue;
 
   class blockQueueFiller : public ThreadWorker
   {

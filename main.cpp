@@ -9,6 +9,7 @@
 using ATE_Util::Options;
 using ATE_Util::Coefficients;
 using ATE_Util::CoefficientType;
+using ATE_BlockQueue::BlockQueue;
 using ATE_Threading::ThreadManager;
 using ATE_Threading::blockQueueFiller;
 using ATE_Threading::BlockProcessor;

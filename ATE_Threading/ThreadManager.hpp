@@ -6,7 +6,9 @@
 #define MAFN_ATE_THREADMANAGER_HPP
 
 #include "OS_namespaces.h"
+
 #include "ATE_Util/wait.hpp"
+
 
 namespace ATE_Threading {
 
